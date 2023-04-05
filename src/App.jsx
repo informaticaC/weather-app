@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import axios from 'axios'
+import axios, { AxiosError, isAxiosError } from 'axios'
 import WeatherCard from './components/WeatherCard'
 import Loading  from "./components/Loading";
 
@@ -37,13 +37,12 @@ function App() {
     }else if(location){
       let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=f054e09ba76d80b0ea24c122a6a6d982 `
       axios.get(url)
-      .then(res => setWeather(res.data) )
-      setLocation('')
+      .then(res => setWeather(res.data))
+      // setLocation('')
     }
   }, [latlon, location])
   
-  // console.log('latlon___**:',latlon)
-  // console.log('Weather:', weather)
+
 
   const handleSubmit = (e)=> {
     e.preventDefault()
@@ -51,7 +50,6 @@ function App() {
     setLocation(e.target.inputLocation.value)
     setLatlon(false)
     e.target.inputLocation.value =''
-    
   }
   
   const showCard = ()=> {return (
