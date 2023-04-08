@@ -53,26 +53,31 @@ function App() {
   }
   
   const showCard = ()=> {return (
-    <div>
+    <div className='content_card'>
       <h1>Weather App</h1>
-      <div className="select-input">
-        <form action="" onSubmit={handleSubmit} >
+      
+      <form className="select-loc" action="" onSubmit={handleSubmit} >
           <input type="text" name="" id="inputLocation" />
-          <button>Select location</button>
-        </form>
-      </div>
+          <button className='button'>Select location</button>
+      </form>
+      
       <WeatherCard weather = {weather}/>
+      
     </div>
+    
   )}
 
   return (
     <div className="App">
       
-      {weather?
-         showCard() 
-        :<Loading />
-      }
-      
+        {weather?
+           <div className="card">
+            {showCard()}
+            <div className="card__overlay"></div>
+           </div>  
+          :<Loading />
+        }
+            
     </div>
   )
 }

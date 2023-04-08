@@ -4,7 +4,7 @@ const Loading = () => {
   return (
     <div className="loading">
       <p>Weather App loading...</p>
-      <div class="spinner-grow text-info">
+      <div className="spinner-grow text-info">
 
       
       </div>

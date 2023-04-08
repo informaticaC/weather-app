@@ -1,14 +1,109 @@
 :root{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    background-color: bisque;
+    
 }
 
-.loading{
+.App{
+    max-width: 100vw;
     height: 100vh;
-    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/public/img/evercastCloud-d1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.card{
+    width: 365px;
+    height: 600px;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    border: none;
+    position: relative;
+    background-color: #d1d9e685;
+
+}
+
+.card .content_card{
+    /* position: absolute; */
+    z-index: 1;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.card .loading{
+    height: 100%;
+    width: 365px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+} 
+
+.select-loc{
+    /* background-color: #ff000020; */
+    height: 50px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items:center;
+    /* border: 1px solid lightblue; */
+    padding: 2rem 0 3rem 0 ;
+}
+.button{
+    box-shadow: .5rem .5rem 1rem rgba(23, 2, 2, 0.745);
+    height: 45px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgba(218, 210, 241, 0.122);
+    background-image: none;
+}
+
+.select-loc > .button{
+    font-size: .8rem;
+    height: 30px;
+}
+
+footer > .button{
+    width: 140px;
+}
+
+.select-loc > input{
+    height: 30px;
+    border-radius: 5px;
+    border: 0;
+    background-color: aliceblue;
+
+}
+
+.button:hover{
+    border:1px solid rgb(102, 136, 229);
+}
+
+article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section--head{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.section--head > img{
+    width: 40%;
+    display: block;
+
 }
