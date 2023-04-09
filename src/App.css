@@ -15,6 +15,15 @@
     background-position: center;
 }
 
+.loading{
+    height: 100%;
+    width: 365px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} 
+
 .card{
     width: 365px;
     height: 600px;
@@ -39,14 +48,7 @@
     padding: 1rem;
 }
 
-.card .loading{
-    height: 100%;
-    width: 365px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-} 
+
 
 .select-loc{
     /* background-color: #ff000020; */
@@ -68,7 +70,7 @@
 }
 
 .select-loc > .button{
-    font-size: .8rem;
+    font-size: .7rem;
     height: 30px;
 }
 
@@ -81,7 +83,12 @@ footer > .button{
     border-radius: 5px;
     border: 0;
     background-color: aliceblue;
+}
 
+.select-loc > input:focus-within{
+    border:1px solid rgb(102, 136, 229);
+    
+    
 }
 
 .button:hover{
@@ -100,10 +107,30 @@ article{
     flex-direction: row-reverse;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .section--head > img{
     width: 40%;
     display: block;
+}
 
+.weather-list{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    gap: 2rem;
+}
+
+footer div{
+    font-size: 1.5rem;
 }

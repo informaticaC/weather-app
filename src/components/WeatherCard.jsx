@@ -29,9 +29,9 @@ return (
         </div>          
                       
         <ul className="weather-list">
-          <li className="weather-list-items">Wind Speed: {weather?.wind.speed} m/s</li>
-          <li className="weather-list-items">Clouds: {weather?.clouds.all}</li>
-          <li className="weather-list-items">Pressure: {weather?.main.pressure} hPa</li>
+          <li className="weather-list-items">Wind Speed: <b>{weather?.wind.speed}</b>  m/s</li>
+          <li className="weather-list-items">Clouds: <b>{weather?.clouds.all}</b> </li>
+          <li className="weather-list-items">Pressure: <b>{weather?.main.pressure}</b>  hPa</li>
         </ul>
         <footer>
             <div>{

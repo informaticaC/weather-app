@@ -71,10 +71,7 @@ function App() {
     <div className="App">
       
         {weather?
-           <div className="card">
-            {showCard()}
-            <div className="card__overlay"></div>
-           </div>  
+           <div className="card"> {showCard()} </div>  
           :<Loading />
         }
             
