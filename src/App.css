@@ -31,7 +31,7 @@
     justify-content: space-around; 
     align-items: center;
     flex-direction: column;
-    padding: 1rem;
+    padding: .8rem;
     border: none;
     position: relative;
     background-color: #d1d9e685;
@@ -39,8 +39,6 @@
 }
 
 .card .content_card{
-    /* position: absolute; */
-    z-index: 1;
     display: flex;
     justify-content: space-around; 
     align-items: center;
@@ -48,6 +46,9 @@
     padding: 1rem;
 }
 
+.section--head h6{
+     font-size: 1.1rem; 
+}
 
 
 .select-loc{
@@ -72,6 +73,7 @@
 .select-loc > .button{
     font-size: .7rem;
     height: 30px;
+    width:100px;
 }
 
 footer > .button{
@@ -85,15 +87,15 @@ footer > .button{
     background-color: aliceblue;
 }
 
-.select-loc > input:focus-within{
+.select-loc > input:hover{
     border:1px solid rgb(102, 136, 229);
-    
-    
+    border-style: inset;
 }
 
 .button:hover{
     border:1px solid rgb(102, 136, 229);
 }
+
 
 article{
     display: flex;
@@ -118,9 +120,11 @@ article{
 .weather-list{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items:flex-start;
     flex-direction: column;
+    list-style: none;
 }
+
 
 footer{
     display: flex;

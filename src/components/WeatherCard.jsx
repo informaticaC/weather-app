@@ -19,18 +19,27 @@ const WeatherCard = ({weather}) => {
       return
     }
 
+    const capitalize = (e)=> {
+      let textUppercase='';
+      for (const word of e.split(' ')) {
+        textUppercase += word.split('')[0].toUpperCase()+word.slice(1)+' ';
+      }
+      
+      return textUppercase.trim()
+    }
+
 return (
     <article>
       <h4>{weather?.name}, {weather?.sys.country}</h4>
       <section>
         <div className="section--head">
-          <h6>"{weather?.weather[0].description}"</h6>
+          <h6>"{capitalize(weather?.weather[0].description)}"</h6>
           <img src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@4x.png`} alt="icon"/>
         </div>          
                       
         <ul className="weather-list">
           <li className="weather-list-items">Wind Speed: <b>{weather?.wind.speed}</b>  m/s</li>
-          <li className="weather-list-items">Clouds: <b>{weather?.clouds.all}</b> </li>
+          <li className="weather-list-items">Clouds: <span><b>{weather?.clouds.all}</b> %</span></li>
           <li className="weather-list-items">Pressure: <b>{weather?.main.pressure}</b>  hPa</li>
         </ul>
         <footer>

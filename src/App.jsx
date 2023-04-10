@@ -5,6 +5,7 @@ import './App.css'
 import axios, { AxiosError, isAxiosError } from 'axios'
 import WeatherCard from './components/WeatherCard'
 import Loading  from "./components/Loading";
+import ErrorView from './components/ErrorView'
 
 function App() {
   const [latlon, setLatlon] = useState() //usado para geolocation
@@ -13,18 +14,25 @@ function App() {
 
   useEffect(() => {
     const success = (pos) => {
-      // console.log(pos.cords)
+      
       const obj = {
         lat: pos.coords.latitude,
         lon: pos.coords.longitude
       }
       setLatlon(obj)
+      
     }
     const error = (err) => {
-      console.log(err)
+      console.log("El usuario bloqueo la geolocalización",err.code);
+      ErrorView(err)
+      
+      
     }
     navigator.geolocation.getCurrentPosition(success, error )
   }, [])
+
+  console.log(latlon)
+  
 
   useEffect(() =>{
     if(latlon){
@@ -46,7 +54,7 @@ function App() {
 
   const handleSubmit = (e)=> {
     e.preventDefault()
-    console.log(e.target.inputLocation.value)
+    // console.log(e.target.inputLocation.value)
     setLocation(e.target.inputLocation.value)
     setLatlon(false)
     e.target.inputLocation.value =''
