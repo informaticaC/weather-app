@@ -11,6 +11,7 @@ function App() {
   const [latlon, setLatlon] = useState() //usado para geolocation
   const [location, setLocation] = useState('') //usado para el ingreso manual de la localidad
   const [weather, setWeather] = useState()
+  const [ip, setip] = useState()
 
   useEffect(() => {
     const success = (pos) => {
@@ -24,14 +25,13 @@ function App() {
     }
     const error = (err) => {
       console.log("El usuario bloqueo la geolocalización",err.code);
-      ErrorView(err)
-      
-      
+      ErrorView(err);
+      setLocation('London, Uk')
     }
     navigator.geolocation.getCurrentPosition(success, error )
   }, [])
 
-  console.log(latlon)
+  console.log(ip)
   
 
   useEffect(() =>{
