@@ -11,9 +11,10 @@ function App() {
   const [latlon, setLatlon] = useState() //usado para geolocation
   const [location, setLocation] = useState('') //usado para el ingreso manual de la localidad
   const [weather, setWeather] = useState()
-  const [ip, setip] = useState()
+  const [error, setError] = useState(false)
+  const defaultLocation = 'London, Uk'
 
-  useEffect(() => {
+  useEffect(() => { //aquí se intena geolocalizar la ubicación delusuario
     const success = (pos) => {
       
       const obj = {
@@ -24,17 +25,15 @@ function App() {
       
     }
     const error = (err) => {
-      console.log("El usuario bloqueo la geolocalización",err.code);
+      // console.log("El usuario bloqueo la geolocalización",err.code);
       ErrorView(err);
-      setLocation('London, Uk')
+      setError(err)
+      setLocation(defaultLocation)
     }
     navigator.geolocation.getCurrentPosition(success, error )
   }, [])
 
-  console.log(ip)
-  
-
-  useEffect(() =>{
+  useEffect(() =>{ //se muestra la geolocalización o bien se selecciona una localización manualmente
     if(latlon){
       const apikey = 'f054e09ba76d80b0ea24c122a6a6d982'
       let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latlon.lat}&lon=${latlon.lon}&appid=${apikey}`
@@ -42,16 +41,18 @@ function App() {
 
       axios.get(url)
       .then(res => setWeather(res.data) )
-    }else if(location){
+
+    }else if(location){ // se mostrarán los datos del tiempo de la localización ingresada en el input
       let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=f054e09ba76d80b0ea24c122a6a6d982 `
       axios.get(url)
-      .then(res => setWeather(res.data))
+      .then(res => {
+        setError(false)
+        setWeather(res.data)})
+      .catch(e => setError(e))
       // setLocation('')
     }
-  }, [latlon, location])
+  }, [latlon, location]) //aquí agrego el useState location para que cargue los datos al ingresar algo en el input
   
-
-
   const handleSubmit = (e)=> {
     e.preventDefault()
     // console.log(e.target.inputLocation.value)
@@ -63,13 +64,21 @@ function App() {
   const showCard = ()=> {return (
     <div className='content_card'>
       <h1>Weather App</h1>
+      <div className='error'>
+        {
+          error?
+          `It seems that the city does not exist, please try again!`
+          :''
+        }
+        </div> 
       
       <form className="select-loc" action="" onSubmit={handleSubmit} >
           <input type="text" name="" id="inputLocation" />
           <button className='button'>Select location</button>
       </form>
+     
       
-      <WeatherCard weather = {weather}/>
+      <WeatherCard weather = {weather} error = {error}/>
       
     </div>
     

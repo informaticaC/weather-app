@@ -138,3 +138,10 @@ footer{
 footer div{
     font-size: 1.5rem;
 }
+
+.error{
+    height: 1rem;
+    font-size: .8rem;
+    font-weight: 100;
+    color:blueviolet
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ErrorView = (err) => {
-    console.log(err)
+    console.log(err.message)
     //  switch(err.code) {
     //      case err.PERMISSION_DENIED:
     //          console.log(err.PERMISSION_DENIED)
@@ -19,7 +19,7 @@ const ErrorView = (err) => {
 
 
   return (
-    <div>ErrorView</div>
+    <div>`ErrorView: ${err.message} `</div>
   )
 }
 

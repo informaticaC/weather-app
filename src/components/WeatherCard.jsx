@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import App from '../App';
 
-const WeatherCard = ({weather}) => {
+const WeatherCard = ({weather, error}) => {
     // console.log(weather)
     
     const [temperature, setTemperature] = useState()
@@ -24,13 +24,13 @@ const WeatherCard = ({weather}) => {
       for (const word of e.split(' ')) {
         textUppercase += word.split('')[0].toUpperCase()+word.slice(1)+' ';
       }
-      
       return textUppercase.trim()
     }
 
 return (
     <article>
       <h4>{weather?.name}, {weather?.sys.country}</h4>
+       
       <section>
         <div className="section--head">
           <h6>"{capitalize(weather?.weather[0].description)}"</h6>
