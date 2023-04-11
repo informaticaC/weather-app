@@ -3,7 +3,6 @@ import App from '../App';
 
 const WeatherCard = ({weather, error}) => {
     // console.log(weather)
-    
     const [temperature, setTemperature] = useState()
     const [celsiusShowing, setCelsiusshowing] = useState(true) //uso para saber si la unidad de temp se muestra en Celsius o no
     const celsius = (weather?.main.temp - 273.15).toFixed(1)

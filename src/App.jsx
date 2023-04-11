@@ -11,6 +11,7 @@ function App() {
   const [latlon, setLatlon] = useState() //usado para geolocation
   const [location, setLocation] = useState('') //usado para el ingreso manual de la localidad
   const [weather, setWeather] = useState()
+  const [tempWeather, setTempWeather] = useState()
   const [error, setError] = useState(false)
   const defaultLocation = 'London, Uk'
 
@@ -48,18 +49,25 @@ function App() {
       .then(res => {
         setError(false)
         setWeather(res.data)})
-      .catch(e => setError(e))
+      .catch(e => {
+        setError(e)
+        setWeather(tempWeather)
+      })
       // setLocation('')
     }
   }, [latlon, location]) //aquí agrego el useState location para que cargue los datos al ingresar algo en el input
   
   const handleSubmit = (e)=> {
     e.preventDefault()
+    if (e.target.inputLocation.value){
     // console.log(e.target.inputLocation.value)
     setLocation(e.target.inputLocation.value)
     setLatlon(false)
     e.target.inputLocation.value =''
-  }
+    setTempWeather(weather)//guardo los datos por si da error, para restaurarlos.
+    setWeather(false) // para que vaya a la panalla de loading
+    }                 // cuando ingresamos una localidad en el input
+  }                   
   
   const showCard = ()=> {return (
     <div className='content_card'>
